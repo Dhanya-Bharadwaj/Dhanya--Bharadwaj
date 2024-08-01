@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dhanya Bharadwaj</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes swing {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(10deg);
+            }
+
+            50% {
+                transform: rotate(-10deg);
+            }
+
+            75% {
+                transform: rotate(10deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        body {
+            background-color: #1c1c1c;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: #1c1c1c;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #ffffff;
+            font-size: 23px;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+        .navbar-nav .nav-link {
+            margin: 0 10px;
+
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffffff;
+            transition: color 0.3s;
+            font-size: 25px;
+        }
+
+        .containers {
+            background-color: #1c1c1c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+            overflow-x: hidden;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #f8f9fa;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .profile-photo:hover {
+            animation: pulse 0.6s infinite;
+        }
+
+        .intro {
+            text-align: center;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .intro p {
+            font-size: 24px;
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        .intro .highlight {
+            color: #768386;
+        }
+
+        .icon-set a {
+            color: #acd8f8;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: transform 0.3s;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .icon-set a:hover {
+            color: white;
+            animation: swing 0.5s;
+        }
+
+        .section {
+            background-color: #1c1c1c;
+            border-radius: 0;
+            padding: 20px;
+            margin: 40px 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #f7eff0;
+        }
+
+        .about-me {
+
+            padding: 30px;
+            border-radius: 10px;
+
+            background-color: #1c1c1c;
+            ;
+            text-align: center;
+        }
+
+        .about-me p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .skills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            overflow-x: hidden;
+        }
+
+        .skills a {
+            margin: 10px;
+            font-size: 30px;
+            color: #b7d8fb;
+            transition: color 0.2s, transform 0.3s;
+        }
+
+        .skills a:hover {
+            color: #faf4f5;
+            transform: translateY(-5px);
+        }
+
+        .project-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .project-col {
+            flex: 1 1 calc(50% - 20px);
+            box-sizing: border-box;
+            max-width: calc(50% - 20px);
+            margin-bottom: 20px;
+        }
+
+        .project {
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            overflow-x: hidden;
+
+        }
+
+        .project img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .project:hover img {
+            transform: scale(1.1);
+            filter: brightness(80%);
+        }
+
+        .project-info {
+            position: absolute;
+            object-fit: fill;
+            width: 100%;
+            justify-content: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: white;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+        }
+        .project:hover .project-info {
+            opacity: 1;
+        }
+
+        .project-info h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .project-info p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .project-info a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1c1c1c;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            overflow-x: hidden;
+        }
+
+        @media (max-width: 767.98px) {
+
+            .navbar-brand,
+            .nav-link {
+                font-size: 20px;
+            }
+
+            .intro p {
+                font-size: 20px;
+            }
+
+            .skills a {
+                font-size: 24px;
+            }
+
+            .project-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project-col {
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>
+        Sorry, we are working on this. Will catch up sometime later.
+    </noscript>
+
+    <header class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Dhanya Bharadwaj</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact Me</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="containers">
+        <div class="profile-photo-container">
+            <img src="https://media.licdn.com/dms/image/D5603AQGHu2NKHhQQnA/profile-displayphoto-shrink_800_800/0/1685882891469?e=1727913600&v=beta&t=MfsodxdKVP0_UyZbAGWJauH4VuNT56woMSiyc5bCf_w"
+                alt="Profile Photo" class="profile-photo">
+        </div>
+        <div class="intro">
+            <p>Hello! I am <span class="highlight">Dhanya Bharadwaj</span>, a passionate software engineer.</p>
+        </div>
+        <div class="intro">
+            <div class="icon-set">
+                <a href="https://www.linkedin.com/in/dhanyabharadwaj/" target="_blank" data-toggle="tooltip"
+                    title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:dhanyabharadwaj2403@gmail.com" target="_blank" data-toggle="tooltip" title="Email">
+                    <i class="far fa-envelope"></i>
+                </a>
+                <a href="https://github.com/Dhanya-Bharadwaj" target="_blank" data-toggle="tooltip" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:dhanyabharadwaj2403@gmail.com" target="_blank" data-toggle="tooltip" title="Email">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="containers section">
+        <div class="about-me">
+            <h2>About Me</h2>
+            <p>As a proficient software engineer, I excel in C, C++, Python, HTML, CSS, SQL, DBMS, MES, and UI/UX. With
+                hands-on experience in machine learning and web development, I am adept at creating innovative
+                solutions. I have successfully developed projects such as a Medical Recommendation System and a Hotel
+                Management System. I am passionate about leveraging technology to solve real-world problems and am
+                always eager to learn new skills and take on new challenges.</p>
+        </div>
+    </div>
+
+    <div id="skills" class="containers section">
+        <h2>Skills</h2>
+        <div class="skills">
+            <a href="#" data-toggle="tooltip" title="C"><i class="fab fa-cuttlefish"></i></a>
+            <a href="#" data-toggle="tooltip" title="C++"><i class="fas fa-code"></i></a>
+            <a href="#" data-toggle="tooltip" title="Python"><i class="fab fa-python"></i></a>
+            <a href="#" data-toggle="tooltip" title="HTML"><i class="fab fa-html5"></i></a>
+            <a href="#" data-toggle="tooltip" title="CSS"><i class="fab fa-css3-alt"></i></a>
+            <a href="#" data-toggle="tooltip" title="SQL"><i class="fas fa-database"></i></a>
+            <a href="#" data-toggle="tooltip" title="DBMS"><i class="fas fa-server"></i></a>
+            <a href="#" data-toggle="tooltip" title="MES"><i class="fas fa-cogs"></i></a>
+            <a href="#" data-toggle="tooltip" title="UI/UX"><i class="fas fa-palette"></i></a>
+        </div>
+    </div>
+
+    <div id="projects" class="containers">
+        <h2>Projects</h2>
+        <div class="project-row">
+            <div class="project-col">
+                <div class="project">
+                    <img src="https://plus.unsplash.com/premium_photo-1668898899024-02f028349666?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Medical Recommendation System">
+                    <div class="project-info">
+                        <h3>Medical Recommendation System</h3>
+                        <p>Developed a Medical Recommendation System using Flask and React. This application provides
+                            medical advice based on user input and integrates with a database for accurate
+                            recommendations.</p>
+                        <a href="https://github.com/Dhanya-Bharadwaj/Medical-Recommendation-System"
+                            class="btn btn-primary">GitHub Link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-col">
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1570206986634-afd7cccb68d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVkaWNhbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D"
+                        alt="Hotel Management System">
+                    <div class="project-info">
+                        <h3>Hotel Management System</h3>
+                        <p>Created a comprehensive Hotel Management System using Python and MySQL. This system
+                            efficiently handles bookings, billing, and customer management, enhancing operational
+                            efficiency.</p>
+                        <a href="https://github.com/Dhanya-Bharadwaj/Hotel-management-system"
+                            class="btn btn-primary">GitHub Link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="containers">
+        <h2>Contact</h2>
+        <p>"Passionate and skilled in designing and building user interfaces, I am ready to create clear, engaging, and
+            user-friendly experiences."</p>
+        <a href="mailto:dhanyabharadwaj2403@gmail.com" target="_blank"
+            style="text-align: center; color: white;">dhanyabharadwaj2403@gmail.com</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Dhanya Bharadwaj. All rights reserved.</p>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
